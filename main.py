@@ -8,7 +8,7 @@ Created on Thu Mar 23 11:59:31 2023
 
 def hello_world():
 
-    print("hello world")
+    return "hello world"
 
 if __name__=="__main__":
-    hello_world() 
+    print(hello_world()) 
