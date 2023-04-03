@@ -20,6 +20,7 @@ data.columns = data.columns.str.replace(' ', '')
 
 # Optional enhancement, use K-fold cross validation instead of a train-test split.
 logger.info('splitting data train and test')
+# Split arrays or matrices into random train and test subsets.
 train, test = train_test_split(data, test_size=0.25,random_state=99)
 
 cat_features = [
@@ -34,6 +35,7 @@ cat_features = [
 ]
 
 logger.info('process train data using OneHotEncoder and LabelBinarizer.')
+# Process the data used in the machine learning pipeline.
 X_train, y_train, encoder, lb = process_data(
     train, categorical_features=cat_features, label="salary", training=True
 )
