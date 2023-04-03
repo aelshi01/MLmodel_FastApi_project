@@ -6,6 +6,7 @@ Created on Thu Mar 23 11:59:31 2023
 @author: adamelshimi
 """
 # https://github.com/WhiskersReneeWe/simpleFastAPIappToHeroku/blob/main/main.py
+# https://github.com/drjodyannjones/Deploying-a-Machine-Learning-Model-on-Heroku-with-FastAPI/blob/main/src/app/main.py
 
 from fastapi import FastAPI
 # Import Union since our Item object will have tags that can be strings or a list.

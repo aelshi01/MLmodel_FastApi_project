@@ -12,7 +12,7 @@ WARN_COLOR = '\033[93m'
 
 def run_sanity_check(test_dir):
 
-    #assert path.isdir(test_dir), FAIL_COLOR+f"No direcotry named {test_dir} found in {os.getcwd()}"
+    # assert path.isdir(test_dir), FAIL_COLOR+f"No direcotry named {test_dir} found in {os.getcwd()}"
     print('This script will perform a sanity test to ensure your code meets the criteria in the rubric.\n')
     print('Please enter the path to the file that contains your test cases for the GET() and POST() methods')
     print('The path should be something like abc/def/test_xyz.py')
@@ -38,6 +38,7 @@ def run_sanity_check(test_dir):
     ## GET()
     TEST_FOR_GET_METHOD_RESPONSE_CODE = False
     TEST_FOR_GET_METHOD_RESPONSE_BODY = False
+
     if not test_functions_for_get:
         print(FAIL_COLOR+f"[{WARNING_COUNT}]")
         WARNING_COUNT += 1
@@ -47,10 +48,12 @@ def run_sanity_check(test_dir):
         SANITY_TEST_PASSING = False
 
     else:
+
         for func in test_functions_for_get:
             source = inspect.getsource(getattr(module,func))
             if source.find('.status_code') != -1:
                 TEST_FOR_GET_METHOD_RESPONSE_CODE = True
+
             if (source.find('.json') != -1) or (source.find('json.loads') != -1):
                 TEST_FOR_GET_METHOD_RESPONSE_BODY =  True
 
@@ -80,6 +83,7 @@ def run_sanity_check(test_dir):
         "\nOne test case for EACH of the possible inferences (results/outputs) of the ML model.\n")
         SANITY_TEST_PASSING = False
     else:
+
         if len(test_functions_for_post) == 1:
             print(f"[{WARNING_COUNT}]")
             WARNING_COUNT += 1
@@ -92,6 +96,7 @@ def run_sanity_check(test_dir):
             source = inspect.getsource(getattr(module,func))
             if source.find('.status_code') != -1:
                 TEST_FOR_POST_METHOD_RESPONSE_CODE = True
+
             if (source.find('.json') != -1) or (source.find('json.loads') != -1):
                 TEST_FOR_POST_METHOD_RESPONSE_BODY =  True
                 COUNT_POST_METHOD_TEST_FOR_INFERENCE_RESULT += 1
@@ -100,6 +105,7 @@ def run_sanity_check(test_dir):
             print(FAIL_COLOR+f"[{WARNING_COUNT}]")
             WARNING_COUNT += 1
             print(FAIL_COLOR+"One or more of your test cases for POST() do not seem to be testing the response code.\n")
+            
         if not TEST_FOR_POST_METHOD_RESPONSE_BODY:
             print(FAIL_COLOR+f"[{WARNING_COUNT}]")
             WARNING_COUNT += 1

@@ -1,9 +1,9 @@
-import sys
-sys.path.insert(0, '../')
+# import sys
+# sys.path.insert(0, '../')
 
 import pytest
 from fastapi.testclient import TestClient
-from starter.main import app
+from src.mypkg.main import app
 
 # comment
 App = TestClient(app)
@@ -49,5 +49,5 @@ def test_get():
 def test_post_moreThan_correct():
     r = App.post('/predict', json='moreThan50K')
 
-    assert r.json()["Salary"] == '>50K'
+    assert r.json()["salary"] == '>50K'
     assert r.status_code == 200
