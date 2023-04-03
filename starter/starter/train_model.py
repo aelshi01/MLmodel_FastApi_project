@@ -1,10 +1,10 @@
 # Script to train machine learning model.
 import pandas as pd
 # Split arrays or matrices into random train and test subsets.
-from sklearn.model_selection import train_test_split
+from sklearn.model_selection import train_test_split # noqa: F821
 from sklearn.linear_model import LogisticRegression
 # Process the data used in the machine learning pipeline.
-from ml.data import process_data
+from ml.data import process_data # noqa: F821
 from ml.model import train_model, inference, compute_model_metrics
 from sklearn.preprocessing import OneHotEncoder, label_binarize, LabelBinarizer
 from joblib import dump
@@ -23,7 +23,7 @@ data.columns = data.columns.str.replace(' ', '')
 # Optional enhancement, use K-fold cross validation instead of a train-test split.
 logger.info('splitting data train and test')
 # Split arrays or matrices into random train and test subsets.
-train, test = train_test_split(data, test_size=0.25,random_state=99)
+train, test = train_test_split(data, test_size=0.25,random_state=99) # noqa: F821
 
 cat_features = [
     "workclass",
@@ -40,13 +40,13 @@ logger.info('process train data using OneHotEncoder and LabelBinarizer.')
 # Process the data used in the machine learning pipeline.
 X_train, y_train, encoder, lb = process_data(
     train, categorical_features=cat_features, label="salary", training=True
-)
+)  # noqa: F821
 
 # Proces the test data with the process_data function.
 logger.info('process test data using OneHotEncoder and LabelBinarizer.')
 X_test, y_test, encoder, lb = process_data(
     test, categorical_features=cat_features, label="salary", training=False,encoder= encoder, lb=lb
-)
+) # noqa: F821
 
 # Train and save a model.
 
