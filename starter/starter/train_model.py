@@ -1,7 +1,9 @@
 # Script to train machine learning model.
 import pandas as pd
+# Split arrays or matrices into random train and test subsets.
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
+# Process the data used in the machine learning pipeline.
 from ml.data import process_data
 from ml.model import train_model, inference, compute_model_metrics
 from sklearn.preprocessing import OneHotEncoder, label_binarize, LabelBinarizer
