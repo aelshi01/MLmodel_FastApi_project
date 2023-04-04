@@ -5,8 +5,8 @@ Created on Thu Mar 30
 
 @author: adamelshimi
 """
-import sys
-sys.path.insert(0, '../')
+# import sys
+# sys.path.insert(0, '../')
 
 from starter.ml.model import train_model, compute_model_metrics, inference
 from sklearn.model_selection import train_test_split
