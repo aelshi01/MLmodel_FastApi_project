@@ -62,7 +62,7 @@ async def inference(data: ConsesusData):
     X_test, _, _, _ = process_data(
     payload_dataframe, categorical_features=cat_feat,label=None, training=False,encoder= encoder, lb=lb
     )
-
+    # make prediction
     prediction = model.predict(X_test)[0]
 
     if prediction:
