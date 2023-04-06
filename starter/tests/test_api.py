@@ -4,7 +4,7 @@
 from fastapi.testclient import TestClient
 from src.mypkg.main import app
 
-# comment
+# initiating app
 App = TestClient(app)
 
 
