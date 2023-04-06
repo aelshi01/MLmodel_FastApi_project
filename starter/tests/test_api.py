@@ -1,5 +1,5 @@
-# import sys
-# sys.path.insert(0, '../')
+import sys
+sys.path.insert(0, '../')
 
 from fastapi.testclient import TestClient
 from starter.src.mypkg.main import app
