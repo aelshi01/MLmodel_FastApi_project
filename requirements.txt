@@ -1,9 +1,9 @@
-python==3.9.16
+python
 numpy
 pandas
-scikit-learn==1.2.0
+scikit-learn
 pytest
 requests
-fastapi==0.10.0
+fastapi
 uvicorn
 gunicorn
