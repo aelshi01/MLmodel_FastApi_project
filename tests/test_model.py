@@ -8,9 +8,9 @@ Created on Thu Mar 30
 # import sys
 # sys.path.insert(0, '../')
 
-from starter.ml.model import train_model, compute_model_metrics, inference
+from starters.ml.model import train_model, compute_model_metrics, inference
 from sklearn.model_selection import train_test_split
-from starter.ml.data import process_data
+from starters.ml.data import process_data
 import pandas as pd
 import numpy as np
 
