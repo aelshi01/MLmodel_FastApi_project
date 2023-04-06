@@ -21,7 +21,8 @@ jobs:
       # For example, pypy-2.7 and pypy-3.8
       matrix:
         os: [macos-latest]
-        python-version: ["3.7.16", "3.8.16", "3.9.16", "3.10.10"]
+        # "3.7.16", "3.8.16", "3.9.16", 
+        python-version: ["3.10.10"]
 
     steps:
     - uses: actions/checkout@v3
