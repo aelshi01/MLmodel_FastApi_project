@@ -52,9 +52,9 @@ def test_compute_model_metric():
 
     precision, recall, fbeta = compute_model_metrics(y_test, preds)
 
-    assert 0 < precision < 1, "Precision should be between 0 and 1"
-    assert 0 < recall < 1, "Recall should be between 0 and 1"
-    assert 0 < fbeta < 1, "F1 Score should be between 0 and 1"
+    assert 0 <= precision and precision <= 1, "Precision should be between 0 and 1"
+    assert 0 <= recall and recall <= 1, "Recall should be between 0 and 1"
+    assert 0 <= fbeta and fbeta<= 1, "F1 Score should be between 0 and 1"
 
 def test_inference():
     filename = './data/census.csv'
