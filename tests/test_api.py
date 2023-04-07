@@ -2,7 +2,7 @@
 # sys.path.insert(0, '../')
 
 from fastapi.testclient import TestClient
-from ..src.mypkg.main import app
+from MLmodel_FastApi_project.src.mypkg.main import app
 
 # initiating app
 App = TestClient(app)
