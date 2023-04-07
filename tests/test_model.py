@@ -51,7 +51,9 @@ def test_compute_model_metric():
     preds = model.predict(X_test)
 
     precision, recall, fbeta = compute_model_metrics(y_test, preds)
-
+    precision = float(precision.split(': ')[1])
+    recall = float(recall.split(': ')[1])
+    fbeta = float(fbeta.split(': ')[1])
 
     assert 0 <= float(precision) <= 1, "Precision should be between 0 and 1"
     assert 0 <= float(recall) <= 1, "Recall should be between 0 and 1"
