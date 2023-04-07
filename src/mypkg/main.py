@@ -16,7 +16,7 @@ from pydantic import BaseModel, Field
 import joblib
 import pandas as pd
 
-from starter.ml.data import process_data
+from ml.data import process_data
 
 app = FastAPI()
 
