@@ -21,9 +21,9 @@ from ml.data import process_data
 app = FastAPI()
 
 # Load the model from disk
-model = joblib.load("starter/ml/model.joblib")
-encoder = joblib.load("starter/ml/encoder.joblib")
-lb = joblib.load("starter/ml/lb.joblib")
+model = joblib.load("ml/model.joblib")
+encoder = joblib.load("ml/encoder.joblib")
+lb = joblib.load("ml/lb.joblib")
 
 cat_feat = [
     "workclass",
