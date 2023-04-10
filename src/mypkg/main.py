@@ -54,7 +54,7 @@ class ConsesusData(BaseModel):
 
 
 
-@app.post("/predict")
+@app.post("/prediction")
 async def inference(data: ConsesusData):
     payload_dict = data.dict(by_alias=True)
     payload_dataframe = pd.DataFrame(data=payload_dict, index=[0])
@@ -70,7 +70,7 @@ async def inference(data: ConsesusData):
     else:
         sal_pred = '>50K'
 
-    return {'Salary': sal_pred}
+    return {'prediction': sal_pred}
 
 @app.get("/")
 def greeting():
