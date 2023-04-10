@@ -88,7 +88,7 @@ def test_post_moreThan_correct():
     encoded_data = encoder.transform(input_df)
 
 
-    r = App.post('/prediction', json=json.loads(json.dumps(encoded_data,cls=NumpyArrayEncoder)))
+    r = App.post('/predict', json=json.loads(json.dumps(encoded_data,cls=NumpyArrayEncoder)))
 
     assert r.json() == {'prediction': '>50K'}
     assert r.status_code != 200
@@ -134,7 +134,7 @@ def test_post_lessThan_correct():
     encoded_data = encoder.transform(input_df)
 
 
-    r = App.post('/prediction', json=json.loads(json.dumps(encoded_data,cls=NumpyArrayEncoder)))
+    r = App.post('/predict', json=json.loads(json.dumps(encoded_data,cls=NumpyArrayEncoder)))
 
     assert r.json() == '<=50K'
     assert r.status_code != 200

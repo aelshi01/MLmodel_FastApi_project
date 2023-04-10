@@ -54,7 +54,7 @@ class ConsesusData(BaseModel):
 
 
 
-@app.post("/prediction")
+@app.post("/predict")
 async def inference(data: ConsesusData):
     payload_dict = data.dict(by_alias=True)
     payload_dataframe = pd.DataFrame(data=payload_dict, index=[0])
