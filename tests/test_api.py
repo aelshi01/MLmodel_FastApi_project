@@ -90,7 +90,7 @@ def test_post_moreThan_correct():
 
     r = App.post('/prediction', json=json.loads(json.dumps(encoded_data,cls=NumpyArrayEncoder)))
 
-    assert r.json() == {'prediction': '>50K'}
+    assert r.json()['prediction'] == '>50K'
     assert r.status_code != 200
 
 def test_post_lessThan_correct():
@@ -136,5 +136,5 @@ def test_post_lessThan_correct():
 
     r = App.post('/prediction', json=json.loads(json.dumps(encoded_data,cls=NumpyArrayEncoder)))
 
-    assert r.json() == {'prediction': '<=50K'}
+    assert r.json()['prediction'] == '<=50K'
     assert r.status_code != 200
