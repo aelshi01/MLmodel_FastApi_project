@@ -18,7 +18,11 @@ import pandas as pd
 
 from ml.data import process_data
 
-app = FastAPI()
+app = FastAPI(
+    title="Adam's API",
+    description="An API used for inference on the Census dataset.",
+    version="1.0.0",
+)
 
 # Load the model from disk
 model = joblib.load("ml/model.joblib")
