@@ -131,5 +131,5 @@ def test_train_model():
 
     model = train_model(X_train, y_train)
 
-    assert model.n_features_in_ == 107
+    assert model.n_features_in_ == 108
     # assert model.classes_ == np.array([0,1])
