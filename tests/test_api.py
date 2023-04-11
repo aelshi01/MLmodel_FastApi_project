@@ -2,7 +2,7 @@
 # sys.path.insert(0, '../')
 
 from fastapi.testclient import TestClient
-from src.mypkg.main import fast_app
+from src.mypkg.main import app
 import pandas as pd
 import joblib
 import json
@@ -16,7 +16,7 @@ class NumpyArrayEncoder(JSONEncoder):
         return JSONEncoder.default(self, obj)
 
 # initiating app
-App = TestClient(fast_app)
+App = TestClient(app)
 
 
 lessThan50K = {  "age": 28,

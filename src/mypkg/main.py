@@ -18,7 +18,7 @@ import pandas as pd
 
 from ml.data import process_data
 
-fast_app = FastAPI(
+app = FastAPI(
     title="Adam's API",
     description="An API used for inference on the Census dataset.",
     version="1.0.0",
@@ -58,7 +58,7 @@ class ConsesusData(BaseModel):
 
 
 
-@fast_app.post("/predict")
+@app.post("/predict")
 async def inference(data: ConsesusData):
     payload_dict = data.dict(by_alias=True)
     payload_dataframe = pd.DataFrame(data=payload_dict, index=[0])
@@ -76,12 +76,12 @@ async def inference(data: ConsesusData):
 
     return {'prediction': sal_pred}
 
-@fast_app.get("/")
+@app.get("/")
 def greeting():
     return {'result':'Welcome to Adam Elshimis API.  Enter 14 set attributes of an individual to get a prediction on their salary'}
 
 
-@fast_app.get("/predict/{item_id}")
+@app.get("/predict/{item_id}")
 async def get_items(item_id: int, count: int = 1):
     return {"fetch": f"Fetched {count} of {item_id}"}
 
