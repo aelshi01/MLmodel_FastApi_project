@@ -2,7 +2,7 @@
 # sys.path.insert(0, '../')
 
 from fastapi.testclient import TestClient
-from src.mypkg.main import app
+from main import app
 import pandas as pd
 import joblib
 import json
