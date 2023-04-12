@@ -3,25 +3,23 @@ import requests
 import json
 
 # Define the API URL
-api_url = "https://salary-prediction-fastapi.onrender.com/predict/"
+api_url = "https://salary-prediction-fastapi.onrender.com/predict"
 
 # Define the sample input data
-input_data = {
-    "age": 39,
-    "workclass": "State-gov",
-    "fnlgt": 77516,
-    "education": "Bachelors",
-    "education_num": 13,
-    "marital_status": "Never-married",
-    "occupation": "Adm-clerical",
-    "relationship": "Not-in-family",
+input_data = {  "age": 38,
+    "workclass": "Federal-gov",
+    "fnlgt": 125933,
+    "education": "Masters",
+    "education-num": 14,
+    "marital-status": "Married-civ-spouse",
+    "occupation": "Prof-specialty",
+    "relationship": "Husband",
     "race": "White",
     "sex": "Male",
-    "capital_gain": 2174,
-    "capital_loss": 0,
-    "hours_per_week": 40,
-    "native_country": "United-States",
-}
+    "capital-gain": 0,
+    "capital-loss": 0,
+    "hours-per-week": 40,
+    "native-country": "Iran"}
 
 # Make a POST request to the API
 response = requests.post(api_url, data=json.dumps(input_data))
