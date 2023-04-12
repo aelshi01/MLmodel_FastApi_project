@@ -62,42 +62,24 @@ def inference(model, X):
     return model.predict(X)
 
 
-def model_slices(model, feat: str=None):
+def model_slices(model, data,feature, cat_features: str, encoder,lb):
 
-    if feat:
-        data = model[feat]
-    else:
-        data = model
-        cat_features = [
-        "workclass",
-        "education",
-        "marital-status",
-        "occupation",
-        "relationship",
-        "race",
-        "sex",
-        "native-country",
-        ]
-        for cls in data['workclass'].unique():
-            new_data = data[data["workclass"] == cls]
-            train, test = train_test_split(new_data, test_size=0.25,random_state=99)
+    results = {}
+    for cls in data[feature].unique():
+        new_data = data[data[feature] == cls]
+        
+        try:
+            _, test = train_test_split(new_data, test_size=0.25,random_state=99)
             
-            try:
-                X_train, y_train, encoder, lb = process_data(
-                train, categorical_features=cat_features, label="salary", training=True
-                )
+            X_test, y_test, _, _ = process_data(
+            test, categorical_features=cat_features, label="salary", training=False,encoder= encoder, lb=lb
+            )
+            preds = inference(model,X_test)
+            model_metric = compute_model_metrics(y_test, preds)
+            results[cls] = model_metric
 
-                X_test, y_test, encoder, lb = process_data(
-                test, categorical_features=cat_features, label="salary", training=False,encoder= encoder, lb=lb
-                )
-
-                model = train_model(X_train, y_train)
-                preds = inference(model,X_test)
-                model_metric = compute_model_metrics(y_test, preds)
-                
-                print(f'model_{cls} :', model_metric)
-
-            except ValueError:
-                print(f'model_{cls} Not valid data, target values contains only one class: 0')
-
+        except ValueError:
+            results[cls] = f'slice_{cls} Not valid data, too little data or only has one class'
+    
+    return results
 
