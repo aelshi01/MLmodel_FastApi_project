@@ -59,7 +59,7 @@ class ConsesusData(BaseModel):
 
 
 @app.post("/predict")
-def inference(data: ConsesusData):
+async def inference(data: ConsesusData):
     payload_dict = data.dict(by_alias=True)
     payload_dataframe = pd.DataFrame(data=payload_dict, index=[0])
 
@@ -77,12 +77,12 @@ def inference(data: ConsesusData):
     return {'prediction': sal_pred}
 
 @app.get("/")
-def greeting():
+async def greeting():
     return {'result':'Welcome to Adam Elshimis API.  Enter 14 set attributes of an individual to get a prediction on their salary'}
 
 
-@app.get("/predict/{item_id}")
-def get_items(item_id: int, count: int = 1):
-    return {"fetch": f"Fetched {count} of {item_id}"}
+# @app.get("/predict/{item_id}")
+# def get_items(item_id: int, count: int = 1):
+#     return {"fetch": f"Fetched {count} of {item_id}"}
 
 
