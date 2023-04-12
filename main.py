@@ -59,7 +59,7 @@ class ConsesusData(BaseModel):
 
 
 @app.post("/predict")
-async def inference(data: ConsesusData):
+def inference(data: ConsesusData):
     payload_dict = data.dict(by_alias=True)
     payload_dataframe = pd.DataFrame(data=payload_dict, index=[0])
 
@@ -82,7 +82,7 @@ def greeting():
 
 
 @app.get("/predict/{item_id}")
-async def get_items(item_id: int, count: int = 1):
+def get_items(item_id: int, count: int = 1):
     return {"fetch": f"Fetched {count} of {item_id}"}
 
 
