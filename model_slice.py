@@ -1,6 +1,7 @@
 import joblib
 from ml.model import model_slices
 import json
+import pandas as pd
 
 # Load the model from disk
 model = joblib.load("ml/model.joblib")
