@@ -12,7 +12,6 @@ from ml.model import train_model, compute_model_metrics, inference
 from sklearn.model_selection import train_test_split
 from ml.data import process_data
 import pandas as pd
-import numpy as np
 
     
 def test_compute_model_metric():
