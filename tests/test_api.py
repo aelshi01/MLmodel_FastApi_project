@@ -8,6 +8,7 @@ import joblib
 import json
 from json import JSONEncoder
 import numpy as np
+import requests
 
 class NumpyArrayEncoder(JSONEncoder):
     def default(self, obj):
@@ -48,7 +49,8 @@ def test_get():
     assert r.status_code == 200
 
 def test_post_moreThan_correct():
-    
+    # Define the API URL
+    api_url = "https://salary-prediction-fastapi.onrender.com/predict"      
     model = joblib.load("ml/model.joblib")
     encoder = joblib.load("ml/encoder.joblib")
     lb = joblib.load("ml/lb.joblib")
@@ -79,22 +81,14 @@ def test_post_moreThan_correct():
     "native-country",
     ]
 
-    input_data = pd.DataFrame.from_dict([moreThan50K])
-
-     # Select only relevant columns
-    input_df = input_data[cat_features].values
-
-    # Encode categorical variables
-    encoded_data = encoder.transform(input_df)
-
-
-    r = App.post('/predict', json=json.loads(json.dumps(encoded_data,cls=NumpyArrayEncoder)))
+    r = requests.post(api_url, data=json.dumps(moreThan50K))
 
     assert r.json() == {'prediction': '>50K'}
     assert r.status_code != 200
 
 def test_post_lessThan_correct():
-    
+    # Define the API URL
+    api_url = "https://salary-prediction-fastapi.onrender.com/predict"
     model = joblib.load("ml/model.joblib")
     encoder = joblib.load("ml/encoder.joblib")
     lb = joblib.load("ml/lb.joblib")
@@ -125,16 +119,7 @@ def test_post_lessThan_correct():
     "native-country",
     ]
 
-    input_data = pd.DataFrame.from_dict([lessThan50K])
-
-    # Select only relevant columns
-    input_df = input_data[cat_features].values
-
-    # Encode categorical variables
-    encoded_data = encoder.transform(input_df)
-
-
-    r = App.post('/predict', json=json.loads(json.dumps(encoded_data,cls=NumpyArrayEncoder)))
+    r = requests.post(api_url, data=json.dumps(lessThan50K))
 
     assert r.json() == {'prediction': '<=50K'}
     assert r.status_code != 200
