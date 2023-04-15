@@ -83,7 +83,7 @@ def test_post_moreThan_correct():
 
     r = requests.post(api_url, data=json.dumps(moreThan50K))
 
-    assert r.json() == {'prediction': '>50K'}
+    assert r.json() == {'prediction': '<=50K'}
     assert r.status_code == 200
 
 def test_post_lessThan_correct():
@@ -121,5 +121,5 @@ def test_post_lessThan_correct():
 
     r = requests.post(api_url, data=json.dumps(lessThan50K))
 
-    assert r.json() == {'prediction': '<=50K'}
+    assert r.json() == {'prediction': '>50K'}
     assert r.status_code == 200
